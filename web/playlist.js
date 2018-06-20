@@ -13,7 +13,8 @@ let changePlaylist = function (i, playlist) {
 
     let playlistName = 'tv/videos/playlist' + playlist;
 
-    let url = protocol + tv[i] + port + '/requests/status.xml?command=in_play&input=' + playlistName;
+    // let url = protocol + tv[i] + port + '/requests/status.xml?command=in_play&input=' + playlistName;
+    let url = 'http://localhost:8080/requests/status.xml?command=in_play&input=' + playlistName;
 
     const Http = new XMLHttpRequest();
 
