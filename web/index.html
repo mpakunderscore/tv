@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TV 1</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=1" />
+
+    <script src="playlist.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="index.css">
+
+</head>
+<body>
+
+    <main>
+
+        <!--<h1>TV 1</h1>-->
+
+        <div class="controls">
+            <div>
+                <b>TV 1</b>
+                <div onclick="changePlaylist(1, 1)">Playlist 1</div>
+                <div onclick="changePlaylist(1, 2)">Playlist 2</div>
+            </div>
+
+            <div>
+                <b>TV 2</b>
+                <div onclick="changePlaylist(2, 1)">Playlist 1</div>
+                <div onclick="changePlaylist(2, 2)">Playlist 2</div>
+            </div>
+
+            <div>
+                <b>TV 3</b>
+                <div onclick="changePlaylist(3, 1)">Playlist 1</div>
+                <div onclick="changePlaylist(3, 2)">Playlist 2</div>
+            </div>
+
+            <div>
+                <b>TV 4</b>
+                <div onclick="changePlaylist(4, 1)">Playlist 1</div>
+                <div onclick="changePlaylist(4, 2)">Playlist 2</div>
+            </div>
+
+        </div>
+
+        @reboot export DISPLAY=:0 && vlc --intf http --http-host 127.0.0.1:8080 Videos/playlist1 --loop --no-video-title -f --no-rmtosd-mouse-events
+        <br/>
+
+    </main>
+
+</body>
+</html>
