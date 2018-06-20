@@ -14,22 +14,14 @@ let spawn = require('child_process').spawn;
 
 let player = spawn('sh', ['player.sh', folder], {detached: true});
 
-app.get('/playlist1', function (request, response) {
+app.get('/playlist', function (request, response) {
 
-    console.log('/playlist1')
+    let folder = request.query.folder;
 
-    process.kill(-player.pid);
-    player = spawn('sh', ['player.sh', '/playlist1'], {detached: true});
-
-    response.json({status: '/playlist1'});
-});
-
-app.get('/playlist2', function (request, response) {
-
-    console.log('/playlist2')
+    console.log(folder)
 
     process.kill(-player.pid);
-    player = spawn('sh', ['player.sh', '/playlist2'], {detached: true});
+    player = spawn('sh', ['player.sh', folder], {detached: true});
 
-    response.json({status: '/playlist2'});
+    response.json({playlist: folder});
 });

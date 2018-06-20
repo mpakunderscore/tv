@@ -26,7 +26,7 @@ function jsonp(url, callback) {
 
 let changePlaylist = function (i, playlistId) {
 
-    let url = protocol + tv[i] + port + '/playlist' + playlistId;
+    let url = protocol + tv[i] + port + '/playlist?folder=/playlist' + playlistId;
     // let url = 'http://localhost:8080/requests/status.xml?command=in_play&input=' + playlistName;
 
     jsonp(url, function () {});
