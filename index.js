@@ -1,4 +1,5 @@
 const port = 8080;
+let folder = '/playlist2';
 
 let express = require('express');
 let app = express();
@@ -11,10 +12,21 @@ server.listen(port);
 
 let spawn = require('child_process').spawn;
 
-let folder = '/playlist1';
 
 let player = spawn('sh', ['player.sh', folder],{});
 
-player.stdout.on('data', (data) => {
-    console.log(`stdout: ${data}`);
+app.get('/playlist1', function (request, response) {
+
+    player.kill('SIGINT');
+    player = spawn('sh', ['player.sh', '/playlist1'],{});
+
+    response.json();
+});
+
+app.get('/playlist2', function (request, response) {
+
+    player.kill('SIGINT');
+    player = spawn('sh', ['player.sh', '/playlist2'],{});
+
+    response.json();
 });
