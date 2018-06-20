@@ -1,0 +1,14 @@
+console vlc player dos not work with virtual tty (ssh)
+gui vlc slow
+omxplayer
+
+curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
+sudo apt install -y nodejs
+
+
+
+@reboot export DISPLAY=:0 && vlc --intf http --http-host 192.168.0.145:8080 Videos/playlist1 --loop --no-video-title -f --no-rmtosd-mouse-events
+
+
+Tutorial: Compile VLC with HW acceleration - Stretch, RPi 2/3
+https://www.raspberrypi.org/forums/viewtopic.php?t=195221

@@ -6,8 +6,6 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=1" />
 
-    <script src="playlist.js"></script>
-
     <link rel="stylesheet" type="text/css" href="index.css">
 
 </head>
@@ -44,10 +42,12 @@
 
         </div>
 
-        @reboot export DISPLAY=:0 && vlc --intf http --http-host 127.0.0.1:8080 Videos/playlist1 --loop --no-video-title -f --no-rmtosd-mouse-events
+        @reboot export DISPLAY=:0 && cd /tv && node start
         <br/>
 
     </main>
+
+    <script src="playlist.js"></script>
 
 </body>
 </html>

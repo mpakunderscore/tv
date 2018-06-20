@@ -4,26 +4,46 @@ let protocol = 'http://';
 let tv = [];
 
 tv[0] = '';
-tv[1] = '192.168.0.145';
+tv[1] = '192.168.0.164';
 // tv[2] = '192.168.0.164';
 // tv[3] = '192.168.0.164';
 // tv[4] = '192.168.0.164';
 
+function jsonp(url, callback) {
+
+    var callbackName = 'jsonp_callback_' + Math.round(100000 * Math.random());
+
+    window[callbackName] = function(data) {
+        delete window[callbackName];
+        document.body.removeChild(script);
+        callback(data);
+    };
+
+    var script = document.createElement('script');
+    script.src = url + (url.indexOf('?') >= 0 ? '&' : '?') + 'callback=' + callbackName;
+    document.body.appendChild(script);
+}
+
 let changePlaylist = function (i, playlist) {
 
-    let playlistName = 'tv/videos/playlist' + playlist;
+    let playlistName = 'Videos/playlist' + playlist;
 
-    // let url = protocol + tv[i] + port + '/requests/status.xml?command=in_play&input=' + playlistName;
-    let url = 'http://localhost:8080/requests/status.xml?command=in_play&input=' + playlistName;
+    let url = protocol + tv[i] + port + '/requests/status.xml?command=in_play&input=' + playlistName;
+    // let url = 'http://localhost:8080/requests/status.xml?command=in_play&input=' + playlistName;
 
-    const Http = new XMLHttpRequest();
+    jsonp(url), function () {
 
-    Http.open("GET", url);
-
-    Http.send();
-
-    Http.onreadystatechange = (e) => {
-
-        // console.log(Http.responseText)
     }
+
+    // const Http = new XMLHttpRequest();
+    //
+    // dataType: 'jsonp',
+    // Http.open("GET", url);
+    //
+    // Http.send();
+    //
+    // Http.onreadystatechange = (e) => {
+    //
+    //     // console.log(Http.responseText)
+    // }
 };
