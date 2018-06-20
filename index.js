@@ -13,8 +13,8 @@ let spawn = require('child_process').spawn;
 
 let folder = '/playlist1';
 
-let playlist = spawn('sh', ['player.sh', folder],{});
+let player = spawn('sh', ['player.sh', folder],{});
 
-tv.stdout.on('data', (data) => {
+player.stdout.on('data', (data) => {
     console.log(`stdout: ${data}`);
 });
