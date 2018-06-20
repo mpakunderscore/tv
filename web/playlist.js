@@ -29,19 +29,5 @@ let changePlaylist = function (i, playlistId) {
     let url = protocol + tv[i] + port + '/playlist' + playlistId;
     // let url = 'http://localhost:8080/requests/status.xml?command=in_play&input=' + playlistName;
 
-    jsonp(url), function () {
-
-    }
-
-    // const Http = new XMLHttpRequest();
-    //
-    // dataType: 'jsonp',
-    // Http.open("GET", url);
-    //
-    // Http.send();
-    //
-    // Http.onreadystatechange = (e) => {
-    //
-    //     // console.log(Http.responseText)
-    // }
+    jsonp(url, function () {});
 };
