@@ -4,7 +4,8 @@
 setterm -cursor off
 
 # set here the path to the directory containing your videos
-VideoLocation="/home/pi/tv/videos"+$1
+VideoLocation="/home/pi/tv/videos$1"
+echo $VideoLocation
 
 # you can probably leave this alone
 Process="omxplayer"

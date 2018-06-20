@@ -17,16 +17,20 @@ let player = spawn('sh', ['player.sh', folder],{});
 
 app.get('/playlist1', function (request, response) {
 
+    console.log('/playlist1')
+
     player.kill('SIGINT');
     player = spawn('sh', ['player.sh', '/playlist1'],{});
 
-    response.json();
+    response.json({status: '/playlist1'});
 });
 
 app.get('/playlist2', function (request, response) {
 
+    console.log('/playlist2')
+
     player.kill('SIGINT');
     player = spawn('sh', ['player.sh', '/playlist2'],{});
 
-    response.json();
+    response.json({status: '/playlist2'});
 });
