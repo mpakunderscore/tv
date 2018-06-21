@@ -2,6 +2,8 @@ const port = 8080;
 
 let tv = [];
 
+let folder = '/playlist1';
+
 const requestJson = require('request');
 
 let express = require('express');
@@ -65,31 +67,10 @@ app.get('/scan', function (request, response) {
                     tv.push(ip);
             }
         });
-
-        // let xhttp = new XMLHttpRequest();
-        // xhttp.onreadystatechange = function() {
-        //
-        //     if (this.readyState == 4 && this.status == 200) {
-        //
-        //         console.log('found: ' + i)
-        //         let data = JSON.parse(xhttp.responseText);
-        //         console.log(data);
-        //     }
-        // };
-        //
-        // xhttp.open("GET", , true);
-        // xhttp.timeout = 2000;
-        // xhttp.send();
     }
 });
 
 app.get('/tv', function (request, response) {
-
-    // tv.push('localhost');
-    // tv.push('192.168.0.145');
-    // tv.push('192.168.0.164');
-    // tv.push('192.168.0.180');
-    // tv.push('192.168.0.191');
 
     response.json({tv: tv});
 });
