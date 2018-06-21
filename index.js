@@ -1,4 +1,4 @@
-const port = 8080;
+const port = 80;
 
 let tv = [];
 
@@ -28,7 +28,7 @@ let spawn = require('child_process').spawn;
 
 let player = {};
 
-// player = spawn('sh', ['player.sh', folder], {detached: true});
+player = spawn('sh', ['player.sh', folder], {detached: true});
 
 app.get('/playlist', function (request, response) {
 
