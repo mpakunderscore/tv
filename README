@@ -1,7 +1,17 @@
+sudo apt-get update
+
 sudo apt-get install omxplayer
 
 curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
 sudo apt install -y nodejs
 
+sudo apt-get install git
+git clone https://github.com/mpakunderscore/tv.git
+
+cd tv
+npm i
+
 crontab -e
 @reboot cd tv && npm start
+
+sudo reboot
