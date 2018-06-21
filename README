@@ -1,3 +1,13 @@
+https://www.raspberrypi.org/downloads/raspbian/
+RASPBIAN STRETCH LITE
+
+sudo diskutil unmountDisk force /dev/disk2
+sudo dd bs=1m if=~/Downloads/2018-04-18-raspbian-stretch-lite.img of=/dev/rdisk2 conv=sync
+cd /Volumes/boot
+touch ssh
+
+ssh pi@raspberrypi.local
+
 sudo apt-get update
 
 sudo apt-get install omxplayer
@@ -15,3 +25,18 @@ crontab -e
 @reboot cd tv && npm start
 
 sudo reboot
+
+
+
+Connect:
+
+sftp: pi@raspberrypi.local
+sftp: pi@192.168.0.00
+user: pi
+pass: raspberry
+
+Folder:
+
+/home/pi/tv/videos/
+
+for playlists with .mp4
