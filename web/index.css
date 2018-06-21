@@ -35,6 +35,11 @@ main {
 
 }
 
+.controls > div > section {
+    padding: 10px;
+    /*background-color: black;*/
+}
+
 .controls > div > div {
     cursor: pointer;
     padding: 10px;

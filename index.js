@@ -1,5 +1,9 @@
 const port = 8080;
 
+let tv = [];
+
+const requestJson = require('request');
+
 let express = require('express');
 let app = express();
 
@@ -44,23 +48,46 @@ app.get('/videos', function (request, response) {
 
 app.get('/scan', function (request, response) {
 
-    for (let i = 0; i < 256; i++) {
+    for (let i = 0; i < 255; i++) {
 
-        let xhttp = new XMLHttpRequest();
-        xhttp.open("GET", 'http://192.168.0.' + i + '/list', false);
-        xhttp.send();
+        requestJson('http://192.168.0.' + i + ':8080/videos', { timeout: 1500}, (err, res, body) => {
+
+            if (err) {  } else {
+
+                console.log(i);
+                console.log(body);
+
+                let ip = '192.168.0.' + i;
+
+                if (tv.indexOf(ip) < 0)
+                    tv.push(ip);
+            }
+        });
+
+        // let xhttp = new XMLHttpRequest();
+        // xhttp.onreadystatechange = function() {
+        //
+        //     if (this.readyState == 4 && this.status == 200) {
+        //
+        //         console.log('found: ' + i)
+        //         let data = JSON.parse(xhttp.responseText);
+        //         console.log(data);
+        //     }
+        // };
+        //
+        // xhttp.open("GET", , true);
+        // xhttp.timeout = 2000;
+        // xhttp.send();
     }
 });
 
 app.get('/tv', function (request, response) {
 
-    let tv = [];
-
-    tv.push('localhost');
-    tv.push('192.168.0.145');
-    tv.push('192.168.0.164');
-    tv.push('192.168.0.180');
-    tv.push('192.168.0.191');
+    // tv.push('localhost');
+    // tv.push('192.168.0.145');
+    // tv.push('192.168.0.164');
+    // tv.push('192.168.0.180');
+    // tv.push('192.168.0.191');
 
     response.json({tv: tv});
 });

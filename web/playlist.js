@@ -55,7 +55,7 @@ let videos = function () {
             console.log(data);
 
             let div = document.createElement('div');
-            div.innerHTML += '<b>TV 2 </b>' + tv[i];
+            div.innerHTML += '<section><b>TV 2 </b>' + tv[i] + '</section>';
 
             for (let j = 0; j < data.videos.length; j++) {
 
@@ -73,4 +73,6 @@ let scan = function () {
     request('/scan', function (data) {
         // data.tv
     });
+
+    location.reload();
 };
