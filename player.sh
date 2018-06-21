@@ -18,11 +18,10 @@ while true; do
         sleep 1;
 
 else
-        ls $VideoLocation | sort -R | tail -1 | while read file;
-        do
-                clear
-                # -r for stretched over the entire location
-                omxplayer -r $file > /dev/null
-        done
+
+        file=$(ls $VideoLocation | sort -R | tail -1);
+        clear
+        omxplayer -r "$VideoLocation/$file" > /dev/null
+
 fi
 done
