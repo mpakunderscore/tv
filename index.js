@@ -33,7 +33,7 @@ app.get('/playlist', function (request, response) {
     response.json({playlist: folder});
 });
 
-app.get('/list', function (request, response) {
+app.get('/videos', function (request, response) {
 
     const { readdirSync, statSync } = require('fs');
     const { join } = require('path');
@@ -52,12 +52,15 @@ app.get('/scan', function (request, response) {
     }
 });
 
-app.get('/scan', function (request, response) {
+app.get('/tv', function (request, response) {
 
-    for (let i = 0; i < 256; i++) {
+    let tv = [];
 
-        let xhttp = new XMLHttpRequest();
-        xhttp.open("GET", 'http://192.168.0.' + i + '/list', false);
-        xhttp.send();
-    }
+    tv.push('localhost');
+    tv.push('192.168.0.145');
+    tv.push('192.168.0.164');
+    tv.push('192.168.0.180');
+    tv.push('192.168.0.191');
+
+    response.json({tv: tv});
 });
