@@ -18,11 +18,11 @@ while true; do
         sleep 1;
 
 else
-        for entry in $VideoLocation/*
+        ls $VideoLocation | sort -R | tail -1 | while read file;
         do
                 clear
                 # -r for stretched over the entire location
-                omxplayer -r $entry > /dev/null
+                omxplayer -r $file > /dev/null
         done
 fi
 done
