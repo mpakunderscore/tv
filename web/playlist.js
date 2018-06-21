@@ -28,22 +28,27 @@ tv.push('192.168.0.191');
 //     document.body.appendChild(script);
 // }
 
-let request = function (url) {
+let request = function (url, f) {
 
-    let xhttp = new XMLHttpRequest();
-    xhttp.open("GET", url, false);
-    xhr.timeout = 5000;
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+
+        if (this.readyState == 4 && this.status == 200) {
+
+            f(JSON.parse(xhttp.responseText))
+        }
+    };
+
+    xhttp.open("GET", url, true);
     xhttp.send();
-
-    return JSON.parse(xhttp.responseText);
-}
+};
 
 let changePlaylist = function (i, folder) {
 
     let url = protocol + tv[i] + port + '/playlist?folder=/' + folder;
     // let url = 'http://localhost:8080/requests/status.xml?command=in_play&input=' + playlistName;
 
-    request(url);
+    request(url, null);
 };
 
 let lists = function () {
@@ -54,19 +59,21 @@ let lists = function () {
         // let url = 'http://localhost:8080/requests/status.xml?command=in_play&input=' + playlistName;
         console.log(url);
 
-        let data = request(url);
-        console.log(data);
+        request(url, function (data) {
 
-        let div = document.createElement('div');
-        div.innerHTML += '<b>TV 2 </b>' + tv[i];
+            console.log(data);
 
-        for (let j = 0; j < data.videos.length; j++) {
+            let div = document.createElement('div');
+            div.innerHTML += '<b>TV 2 </b>' + tv[i];
 
-            div.innerHTML += '<div onclick="changePlaylist(' + i + ', ' + data.videos[j] + ')">' + data.videos[j] + '</div>';
-        }
+            for (let j = 0; j < data.videos.length; j++) {
 
-        document.getElementById('controls').appendChild(div);
-        console.log('done')
+                div.innerHTML += '<div onclick="changePlaylist(' + i + ', ' + data.videos[j] + ')">' + data.videos[j] + '</div>';
+            }
+
+            document.getElementById('controls').appendChild(div);
+            console.log('done')
+        });
     }
 };
 
