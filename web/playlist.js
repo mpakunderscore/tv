@@ -18,9 +18,10 @@ let request = function (url, f) {
     xhttp.send();
 };
 
-let changePlaylist = function (i, folder) {
+let changePlaylist = function (i, playlist) {
 
-    let url = protocol + tv[i] + port + '/playlist?folder=/' + folder;
+    console.log(playlist);
+    let url = protocol + tv[i] + port + '/playlist?folder=/' + playlist.innerText;
     // let url = 'http://localhost:8080/requests/status.xml?command=in_play&input=' + playlistName;
 
     request(url, null);
@@ -59,7 +60,7 @@ let videos = function () {
 
             for (let j = 0; j < data.videos.length; j++) {
 
-                div.innerHTML += '<div onclick="changePlaylist(' + i + ', ' + data.videos[j] + ')">' + data.videos[j] + '</div>';
+                div.innerHTML += '<div onclick="changePlaylist(' + i + ', this)">' + data.videos[j] + '</div>';
             }
 
             document.getElementById('controls').appendChild(div);

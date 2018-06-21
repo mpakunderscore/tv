@@ -24,7 +24,9 @@ console.log('http://localhost:' + port);
 
 let spawn = require('child_process').spawn;
 
-// let player = spawn('sh', ['player.sh', folder], {detached: true});
+let player = {};
+
+let player = spawn('sh', ['player.sh', folder], {detached: true});
 
 app.get('/playlist', function (request, response) {
 
