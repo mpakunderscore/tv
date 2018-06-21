@@ -26,7 +26,7 @@ let spawn = require('child_process').spawn;
 
 let player = {};
 
-let player = spawn('sh', ['player.sh', folder], {detached: true});
+player = spawn('sh', ['player.sh', folder], {detached: true});
 
 app.get('/playlist', function (request, response) {
 
