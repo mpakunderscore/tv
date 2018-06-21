@@ -32,14 +32,15 @@ let request = function (url) {
 
     let xhttp = new XMLHttpRequest();
     xhttp.open("GET", url, false);
+    xhr.timeout = 5000;
     xhttp.send();
 
     return JSON.parse(xhttp.responseText);
 }
 
-let changePlaylist = function (i, playlistId) {
+let changePlaylist = function (i, folder) {
 
-    let url = protocol + tv[i] + port + '/playlist?folder=/playlist' + playlistId;
+    let url = protocol + tv[i] + port + '/playlist?folder=/' + folder;
     // let url = 'http://localhost:8080/requests/status.xml?command=in_play&input=' + playlistName;
 
     request(url);
@@ -61,7 +62,7 @@ let lists = function () {
 
         for (let j = 0; j < data.videos.length; j++) {
 
-            div.innerHTML += '<div onclick="changePlaylist(' + i + ', 1)">' + data.videos[j] + '</div>';
+            div.innerHTML += '<div onclick="changePlaylist(' + i + ', ' + data.videos[j] + ')">' + data.videos[j] + '</div>';
         }
 
         document.getElementById('controls').appendChild(div);
@@ -70,3 +71,7 @@ let lists = function () {
 };
 
 lists();
+
+let scan = function () {
+
+};

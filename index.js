@@ -46,5 +46,8 @@ app.get('/scan', function (request, response) {
 
     for (let i = 0; i < 256; i++) {
 
+        let xhttp = new XMLHttpRequest();
+        xhttp.open("GET", 'http://192.168.0.' + i + '/list', false);
+        xhttp.send();
     }
 });
