@@ -56,7 +56,7 @@ let videos = function () {
             console.log(data);
 
             let div = document.createElement('div');
-            div.innerHTML += '<section><b>TV 2 </b>' + tv[i] + '</section>';
+            div.innerHTML += '<section><b>TV </b>' + tv[i] + '</section>';
 
             for (let j = 0; j < data.videos.length; j++) {
 

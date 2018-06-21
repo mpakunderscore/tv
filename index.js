@@ -28,7 +28,7 @@ let spawn = require('child_process').spawn;
 
 let player = {};
 
-player = spawn('sh', ['player.sh', folder], {detached: true});
+// player = spawn('sh', ['player.sh', folder], {detached: true});
 
 app.get('/playlist', function (request, response) {
 
@@ -54,12 +54,12 @@ app.get('/scan', function (request, response) {
 
     for (let i = 0; i < 255; i++) {
 
-        requestJson('http://192.168.0.' + i + ':8080/videos', { timeout: 1500}, (err, res, body) => {
+        requestJson('http://192.168.0.' + i + ':8080/videos', { timeout: 1500 }, (err, res, body) => {
 
-            if (err) {  } else {
+            if (err) {} else {
 
-                console.log(i);
-                console.log(body);
+                // console.log(i);
+                // console.log(body);
 
                 let ip = '192.168.0.' + i;
 

@@ -11,19 +11,19 @@ html, body {
 
     color: rgba(0, 0, 0, 0.7);
 
-    font-size: 26px;
+    font-size: 22px;
 }
 
 main {
     padding: 50px;
-    text-align: center;
+    /*text-align: center;*/
 }
 
 .controls {
     /*display: flex;*/
     /*flex-direction: row;*/
 
-    padding-bottom: 50px;
+    /*padding-bottom: 50px;*/
 }
 
 .controls > div {
@@ -36,13 +36,13 @@ main {
 }
 
 .controls > div > section {
-    padding: 10px;
+    padding: 20px;
     /*background-color: black;*/
 }
 
 .controls > div > div {
     cursor: pointer;
-    padding: 10px;
+    padding: 20px;
     background-color: ghostwhite;
 }
 
