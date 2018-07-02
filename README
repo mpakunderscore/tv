@@ -40,3 +40,8 @@ Folder:
 /home/pi/tv/videos/
 
 for playlists with .mp4
+
+
+
+FOR RENAME VIDEOS IN FOLDER
+ls | cat -n | while read n f; do mv "$f" "$n.mp4"; done
